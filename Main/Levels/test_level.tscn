@@ -120,6 +120,27 @@ color = Color(0.7257336, 0.36016077, 0.21856982, 1)
 position = Vector2(567.875, 36.875)
 shape = SubResource("RectangleShape2D_oia5d")
 
+[node name="StaticBody2D8" type="StaticBody2D" parent="." unique_id=1410738205]
+position = Vector2(874.0001, 28.000015)
+rotation = 0.5987811
+scale = Vector2(0.85261697, -0.9193975)
+
+[node name="ColorRect2" type="ColorRect" parent="StaticBody2D8" unique_id=399457639]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -1.0
+offset_right = 1143.0
+offset_bottom = 74.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.7257336, 0.36016077, 0.21856982, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D8" unique_id=288881359]
+position = Vector2(567.875, 36.875)
+shape = SubResource("RectangleShape2D_oia5d")
+
 [node name="StaticBody2D7" type="StaticBody2D" parent="." unique_id=1296836285]
 position = Vector2(1487, -421)
 rotation = 1.5707964
