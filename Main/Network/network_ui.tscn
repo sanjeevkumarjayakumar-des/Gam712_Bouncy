@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dxrbmuc8j2q13"]
+
+[ext_resource type="Script" uid="uid://bqc7cj75ev3e4" path="res://Main/Network/network_ui.gd" id="1_kou5d"]
+
+[node name="NetworkUI" type="Control" unique_id=673921849]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kou5d")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1180610618]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 10
+
+[node name="serverbtn" type="Button" parent="VBoxContainer" unique_id=1118954804]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "SERVER"
+
+[node name="clientbtn" type="Button" parent="VBoxContainer" unique_id=1726574036]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "CLIENT"
+
+[connection signal="pressed" from="VBoxContainer/serverbtn" to="." method="_on_serverbtn_pressed"]
+[connection signal="pressed" from="VBoxContainer/clientbtn" to="." method="_on_clientbtn_pressed"]
