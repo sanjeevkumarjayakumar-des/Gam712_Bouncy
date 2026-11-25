@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://1d4sek6u7vv7" path="res://Main/Player/test_player.tscn" id="3_d0oil"]
 [ext_resource type="PackedScene" uid="uid://c8cq1c54ynyvq" path="res://Main/Enemy/test_enemy.tscn" id="3_ovh4g"]
 [ext_resource type="PackedScene" uid="uid://dxrbmuc8j2q13" path="res://Main/Network/network_ui.tscn" id="4_ovh4g"]
+[ext_resource type="Script" uid="uid://b048dun7frt0n" path="res://Main/Levels/score_ui.gd" id="5_gswn4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oia5d"]
 size = Vector2(1152.25, 75.75)
@@ -48,16 +49,16 @@ scale = Vector2(2.0983896, 1.7430212)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 4.7655573
-offset_top = -100.97409
-offset_right = 1152.7655
-offset_bottom = -25.97409
+offset_left = 5.718669
+offset_top = -48.765877
+offset_right = 1153.7186
+offset_bottom = 26.234123
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.7257336, 0.36016077, 0.21856982, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=64428724]
-position = Vector2(579.492, -73.4357)
+position = Vector2(573.29675, -15.49033)
 shape = SubResource("RectangleShape2D_oia5d")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=1690382861]
@@ -68,16 +69,16 @@ rotation = 1.5707964
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -33.999985
-offset_top = 338.0
-offset_right = 1114.0
-offset_bottom = 413.0
+offset_left = -70.0
+offset_top = 60.0
+offset_right = 1078.0
+offset_bottom = 135.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.7257336, 0.36016077, 0.21856982, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=1688952080]
-position = Vector2(532, 371.99997)
+position = Vector2(532, 90.99997)
 shape = SubResource("RectangleShape2D_oia5d")
 
 [node name="StaticBody2D5" type="StaticBody2D" parent="." unique_id=1498847707]
@@ -194,3 +195,40 @@ network_player = ExtResource("3_d0oil")
 position = Vector2(913, 263)
 
 [node name="NetworkUI" parent="." unique_id=673921849 instance=ExtResource("4_ovh4g")]
+
+[node name="Score_UI" type="CanvasLayer" parent="." unique_id=1758210389]
+script = ExtResource("5_gswn4")
+
+[node name="Control" type="Control" parent="Score_UI" unique_id=117900903]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Score_UI/Control" unique_id=612986190]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.36979166
+anchor_top = -0.022222219
+anchor_right = 0.6302083
+anchor_bottom = 0.07037037
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Score_UI/Control/PanelContainer" unique_id=1466174554]
+layout_mode = 2
+alignment = 1
+
+[node name="Text" type="Label" parent="Score_UI/Control/PanelContainer/HBoxContainer" unique_id=2034924669]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "SCORE: "
+
+[node name="Score" type="Label" parent="Score_UI/Control/PanelContainer/HBoxContainer" unique_id=768409879]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "0"

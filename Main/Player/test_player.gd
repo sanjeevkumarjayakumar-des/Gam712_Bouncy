@@ -2,6 +2,7 @@ extends RigidBody2D
 
 @onready var statlabel: Label = $Sprite2D/statlabel
 
+
 var is_hunter: bool = false:
 	set(value):
 		is_hunter = value
@@ -39,4 +40,7 @@ func _on_tag_area_player_body_entered(body: Node2D) -> void:
 		return
 	if body != self and body.has_method("can_be_tagged") and body.can_be_tagged():
 		print("Player ", body.name, " was tagged by ", name)
-		# TODO: decide what a tag does (swap roles, eliminate, reset...)
+		GameStateGlobal.hunter_score+= 1
+		print(GameStateGlobal.hunter_score)
+		
+		
