@@ -5,8 +5,6 @@ extends MultiplayerSpawner
 
 
 
-
-
 func _ready() -> void:
 	multiplayer.peer_connected.connect(spawn_player)
 	

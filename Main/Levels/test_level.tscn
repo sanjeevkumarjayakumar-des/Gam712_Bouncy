@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://b1nhnlastpfii" path="res://Main/Levels/HighLevel_multiplayer_spawner.gd" id="2_rkn3d"]
 [ext_resource type="PackedScene" uid="uid://1d4sek6u7vv7" path="res://Main/Player/test_player.tscn" id="3_d0oil"]
+[ext_resource type="PackedScene" uid="uid://c8cq1c54ynyvq" path="res://Main/Enemy/test_enemy.tscn" id="3_ovh4g"]
+[ext_resource type="PackedScene" uid="uid://dxrbmuc8j2q13" path="res://Main/Network/network_ui.tscn" id="4_ovh4g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oia5d"]
 size = Vector2(1152.25, 75.75)
@@ -46,16 +48,16 @@ scale = Vector2(2.0983896, 1.7430212)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -5.0
-offset_top = -1.0
-offset_right = 1143.0
-offset_bottom = 74.0
+offset_left = 4.7655573
+offset_top = -100.97409
+offset_right = 1152.7655
+offset_bottom = -25.97409
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.7257336, 0.36016077, 0.21856982, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=64428724]
-position = Vector2(567.875, 36.875)
+position = Vector2(579.492, -73.4357)
 shape = SubResource("RectangleShape2D_oia5d")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=1690382861]
@@ -66,16 +68,16 @@ rotation = 1.5707964
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -5.0
-offset_top = -1.0
-offset_right = 1143.0
-offset_bottom = 74.0
+offset_left = -33.999985
+offset_top = 338.0
+offset_right = 1114.0
+offset_bottom = 413.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.7257336, 0.36016077, 0.21856982, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=1688952080]
-position = Vector2(567.875, 36.875)
+position = Vector2(532, 371.99997)
 shape = SubResource("RectangleShape2D_oia5d")
 
 [node name="StaticBody2D5" type="StaticBody2D" parent="." unique_id=1498847707]
@@ -188,5 +190,7 @@ spawn_path = NodePath("..")
 script = ExtResource("2_rkn3d")
 network_player = ExtResource("3_d0oil")
 
-[node name="test_player" parent="." unique_id=1904098164 instance=ExtResource("3_d0oil")]
-position = Vector2(249, 139)
+[node name="Test_enemy" parent="." unique_id=389670843 instance=ExtResource("3_ovh4g")]
+position = Vector2(913, 263)
+
+[node name="NetworkUI" parent="." unique_id=673921849 instance=ExtResource("4_ovh4g")]
