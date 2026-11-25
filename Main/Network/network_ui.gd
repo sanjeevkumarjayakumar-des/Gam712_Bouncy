@@ -1,9 +1,9 @@
 extends Control
 
-
 func _on_serverbtn_pressed() -> void:
-	HighLevelNetworkHandler.start_server()
-
+	if HighLevelNetworkHandler.start_server():
+		hide()
 
 func _on_clientbtn_pressed() -> void:
-	HighLevelNetworkHandler.start_client()
+	if HighLevelNetworkHandler.start_client():
+		hide()

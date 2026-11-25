@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://80g647251tlp"]
+
+[ext_resource type="Script" uid="uid://8ejvcyou800t" path="res://Main/Network/main_menu.gd" id="1_lqnfo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6byud"]
+bg_color = Color(0.43748954, 0.662045, 0.49774837, 1)
+
+[node name="MainMenu" type="CanvasLayer" unique_id=288513332]
+script = ExtResource("1_lqnfo")
+
+[node name="Control" type="Control" parent="." unique_id=869974450]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=682979856]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.12577698, 0.14810771, 0.14929092, 1)
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/ColorRect" unique_id=186108402]
+custom_minimum_size = Vector2(500, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6byud")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ColorRect/PanelContainer" unique_id=1137099812]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Joinbtn" type="Button" parent="Control/ColorRect/PanelContainer/VBoxContainer" unique_id=255648190]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 50
+text = "JOIN"
+
+[node name="Quitbtn" type="Button" parent="Control/ColorRect/PanelContainer/VBoxContainer" unique_id=801184164]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 50
+text = "QUIT"
+
+[connection signal="pressed" from="Control/ColorRect/PanelContainer/VBoxContainer/Joinbtn" to="." method="_on_joinbtn_pressed"]
+[connection signal="pressed" from="Control/ColorRect/PanelContainer/VBoxContainer/Quitbtn" to="." method="_on_quitbtn_pressed"]

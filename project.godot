@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 HighLevelNetworkHandler="*uid://wep0pggttb5k"
+GameStateGlobal="*uid://njqhna6i3med"
 
 [display]
 
