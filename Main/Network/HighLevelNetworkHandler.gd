@@ -3,7 +3,7 @@ extends Node
 const PORT: int = 40001
 const MAX_CLIENTS: int = 4
 
-var ip_address: String = "localhost"  # change to the host's IP to play across machines
+var ip_address: String = "10.78.101.35"  # change to the host's IP to play across machines
 var peer: ENetMultiplayerPeer
 
 func _ready() -> void:
