@@ -2,7 +2,6 @@ extends RigidBody2D
 
 @onready var statlabel: Label = $Sprite2D/statlabel
 
-
 var is_hunter: bool = false:
 	set(value):
 		is_hunter = value
@@ -18,11 +17,29 @@ func _ready() -> void:
 		freeze_mode = RigidBody2D.FREEZE_MODE_KINEMATIC
 		freeze = true
 
+func switch_hunter() -> void:
+	if GameStateGlobal.curr_hunter == "A":
+		GameStateGlobal.curr_hunter = "B"
+	else:
+		GameStateGlobal.curr_hunter = "A"
+
 func _update_label() -> void:
-	statlabel.text = "Hunter" if is_hunter else "Player"
+	if is_hunter:
+		statlabel.text = "Hunter"
+		$Sprite2D.self_modulate = Color(0.672, 0.0, 0.0, 1.0)
+	else:
+		statlabel.text = "Player"
+		$Sprite2D.self_modulate = Color(1.0, 1.0, 1.0, 1.0)
 
 func can_be_tagged() -> bool:
 	return not is_hunter
+
+# Runs on every peer. Only the server is allowed to trigger it.
+@rpc("any_peer", "call_local", "reliable")
+func set_hunter(value: bool) -> void:
+	if multiplayer.get_remote_sender_id() not in [0, 1]:
+		return
+	is_hunter = value  # the setter updates the label and color
 
 func _physics_process(_delta: float) -> void:
 	if !is_multiplayer_authority():
@@ -40,7 +57,7 @@ func _on_tag_area_player_body_entered(body: Node2D) -> void:
 		return
 	if body != self and body.has_method("can_be_tagged") and body.can_be_tagged():
 		print("Player ", body.name, " was tagged by ", name)
-		GameStateGlobal.hunter_score+= 1
-		print(GameStateGlobal.hunter_score)
-		
-		
+		GameStateGlobal.update_Score(GameStateGlobal.curr_hunter)
+		switch_hunter()
+		body.set_hunter.rpc(true)
+		set_hunter.rpc(false)
