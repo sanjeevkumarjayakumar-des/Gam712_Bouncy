@@ -4,9 +4,6 @@
 [ext_resource type="Script" uid="uid://yke28jc6cm1n" path="res://Main/Player/test_player.gd" id="1_ghw51"]
 [ext_resource type="Script" uid="uid://oao07sspqnu5" path="res://Main/Player/grapple_controller.gd" id="3_rmjyp"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ghw51"]
-friction = 0.8
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ghw51"]
 size = Vector2(71, 69)
 
@@ -27,9 +24,7 @@ properties/3/replication_mode = 1
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rmjyp"]
 size = Vector2(73, 86.5)
 
-[node name="test_player" type="RigidBody2D" unique_id=1904098164]
-mass = 0.4
-physics_material_override = SubResource("PhysicsMaterial_ghw51")
+[node name="test_player" type="RigidBody2D" unique_id=1040820751]
 script = ExtResource("1_ghw51")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1210597845]
@@ -73,5 +68,8 @@ points = PackedVector2Array(0, 0, 0, 0)
 position = Vector2(0.5, -4.25)
 shape = SubResource("RectangleShape2D_rmjyp")
 debug_color = Color(0.70606744, 0.10080149, 0.30258736, 0.41960785)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1180874851]
+zoom = Vector2(1.5, 1.5)
 
 [connection signal="body_entered" from="TagAreaPlayer" to="." method="_on_tag_area_player_body_entered"]

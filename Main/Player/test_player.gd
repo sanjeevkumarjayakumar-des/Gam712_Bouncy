@@ -2,6 +2,9 @@ extends RigidBody2D
 
 @onready var statlabel: Label = $Sprite2D/statlabel
 
+var on_air: bool
+
+
 var is_hunter: bool = false:
 	set(value):
 		is_hunter = value
@@ -45,19 +48,19 @@ func _physics_process(_delta: float) -> void:
 	if !is_multiplayer_authority():
 		return
 
-	if Input.is_action_just_pressed("LeftPush"):
-		apply_impulse(Vector2(-150, 5), Vector2(10, 0))
-	elif Input.is_action_just_pressed("RightPush"):
-		apply_impulse(Vector2(150, 5), Vector2(-10, 0))
-	elif Input.is_action_just_pressed("UpPush"):
-		apply_impulse(Vector2(5, -300), Vector2(0, 10))
+	if Input.is_action_just_pressed("RightPush"):
+		apply_impulse(Vector2(-300, 5), Vector2(10, 0))
+	elif Input.is_action_just_pressed("LeftPush"):
+		apply_impulse(Vector2(300, 5), Vector2(-10, 0))
+	elif Input.is_action_just_pressed("UpPush") :
+			apply_impulse(Vector2(5, -600), Vector2(0, 10))
+			#on_air = true
 
 func _on_tag_area_player_body_entered(body: Node2D) -> void:
 	if not multiplayer.is_server() or not is_hunter:
 		return
 	if body != self and body.has_method("can_be_tagged") and body.can_be_tagged():
 		print("Player ", body.name, " was tagged by ", name)
-		GameStateGlobal.update_Score(GameStateGlobal.curr_hunter)
 		switch_hunter()
 		body.set_hunter.rpc(true)
 		set_hunter.rpc(false)

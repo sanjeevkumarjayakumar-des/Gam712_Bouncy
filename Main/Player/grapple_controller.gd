@@ -1,8 +1,8 @@
 extends Node2D
 
-@export var rest_length = 260.0
-@export var stiffness = 12.0
-@export var damping = 0.1
+@export var rest_length = 100
+@export var stiffness = 60
+@export var damping = 2
 
 @onready var player = $".."
 @onready var ray: RayCast2D = $RayCast2D
